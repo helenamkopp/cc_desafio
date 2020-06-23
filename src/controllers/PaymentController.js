@@ -1,3 +1,6 @@
+var date_ = require('date-fns')
+var add = require('date-fns/add')
+
 const mongoose = require('mongoose');
 
 const Payment = mongoose.model('Payment')
@@ -9,57 +12,48 @@ module.exports = {
         return res.json(payments);
     },
     async store(req, res){
-        // req.bod
-        
-        var date = new Date()
-        var day = date.getDate();
-        var month = date.getMonth();
-        var year = date.getFullYear();
-        var dateFormatted = day +'/'+ (month++) +'/' + year;
-
-        var type = req.body.type
-        var status = ""
-        var value = req.body.value
-        var installments = req.body.installments
-        var fee = 0
-        var received_date = ""
+        payment = req.body
+        var actual_date = Date.now()
+        const value = payment.value
+        const type = payment.type
+    
 
         if (type == "debit") {
-            status = "received"
-            received_date = dateFormatted
-            installments = 0
-            fee = (2.8 * value) / 100
-            value -= (2.8 * value) / 100 
+            payment.status = "received"
+            payment.received_date = actual_date
+            payment.installments = 0
+            payment.fee = (2.8 * value) / 100
+            payment.value -= (2.8 * value) / 100
+            await Payment.create(payment);
 
         } else if (type == "credit") {
-            status = "expected"
-            received_date = dateFormatted
-            installments = 0
-            fee = (3.2 * value) / 100 
-            value -= (3.2 * value) / 100
+            payment.status = "expected"
+            payment.received_date = add(actual_date, {days: 30})
+            payment.installments = 0
+            payment.fee = (3.2 * value) / 100 
+            payment.value -= (3.2 * value) / 100
+            await Payment.create(payment);
 
         } else if (type == "installment_credit") {
-            status = "expected"
-            received_date = dateFormatted
-
+            payment.status = "expected"
+            installments = payment.installments
+            payment.received_date = actual_date
             if (installments >= 2 && installments <= 6) {
-                fee = (3.8 * value) / 100 
-                value -= (3.8 * value) / 100
+                payment.fee = (3.8 * value) / 100 
+                payment.value -= (3.8 * value) / 100
             } else if (installments >= 7 && installments <= 12) {
-                fee = (4.2 * value) / 100 
-                value -= (4.2 * value) / 100
+                payment.fee = (4.2 * value) / 100 
+                payment.value -= (4.2 * value) / 100
             }
-            // return res.json(payment);
+            
+            for( var installment_number=1;  installment_number<= installments; installment_number++){
+                payment.received_date = add(payment.received_date, {days: 30})
+                await Payment.create(payment);
+            }
+
         }
-        // console.log(received_date)
-        // console.log(req.body.received_date)
-        req.body.installments = installments
-        req.body.status = status
-        req.body.fee = fee
-        req.body.value = value
-        
-        var payment = await Payment.create(req.body);
-        return res.json(req.body);
+
+        return res.json(payment);
     },
     async show(req, res){
         const payment = await Payment.findById(req.params.id);

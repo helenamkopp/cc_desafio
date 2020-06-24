@@ -1,0 +1,201 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2020-06-24T00:37:49.776Z",
+    "__export_source": "insomnia.desktop.app:v2020.2.2",
+    "resources": [
+        {
+            "_id": "req_34ef8fcf7b8444ba844a3d445c00e6f2",
+            "authentication": {},
+            "body": {},
+            "created": 1592860446839,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1592845430191,
+            "method": "GET",
+            "modified": 1592860501621,
+            "name": "Index",
+            "parameters": [],
+            "parentId": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/payments",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "created": 1592860446836,
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1592845416443,
+            "modified": 1592860446836,
+            "name": "CC_desafio",
+            "parentId": "wrk_838153b9bc53404f9bb6f5e6e45d658b",
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_838153b9bc53404f9bb6f5e6e45d658b",
+            "created": 1592845384761,
+            "description": "",
+            "modified": 1592845384761,
+            "name": "CC_desafio",
+            "parentId": null,
+            "scope": null,
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_a1cd594fec8940f980257c7ad9a7bf8d",
+            "authentication": {},
+            "body": {},
+            "created": 1592860446842,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1592845405261.25,
+            "method": "GET",
+            "modified": 1592860510882,
+            "name": "Show",
+            "parameters": [],
+            "parentId": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/payments/5ef0ef5a2d237f1e7816e213",
+            "_type": "request"
+        },
+        {
+            "_id": "req_a067f8fac31040f894d7499cab957cc4",
+            "authentication": {},
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"value\": 100.00,\n\t\"description\": \"Bicicleta ZXY Aro 21\", \n\t\"type\": \"debit\", \n\t\"installments\": null, \n\t\"card\": {\n\t\t\"number\": \"5200555500001234\", \n\t\t\"expiry\": \"20/21\", \n\t\t\"cvv\": \"123\", \n\t\t\"holder\": \"Fulano de tal\" \n\t}\n}"
+            },
+            "created": 1592860446841,
+            "description": "",
+            "headers": [
+                {
+                    "id": "pair_91cf7494668e4ffabce810a0f66142f9",
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "isPrivate": false,
+            "metaSortKey": -1592845380331.5,
+            "method": "POST",
+            "modified": 1592958005829,
+            "name": "Create",
+            "parameters": [],
+            "parentId": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/payments",
+            "_type": "request"
+        },
+        {
+            "_id": "req_0c56954b7bce40de8cf3ac83c236657d",
+            "authentication": {},
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"card\": {\n\t\t\"number\": \"5200555500001234\", \n\t\t\"expiry\": \"20/21\", \n\t\t\"cvv\": \"123\", \n\t\t\"holder\": \"Pedro de tal\" \n\t}\n}"
+            },
+            "created": 1592860446844,
+            "description": "",
+            "headers": [
+                {
+                    "id": "pair_91cf7494668e4ffabce810a0f66142f9",
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "isPrivate": false,
+            "metaSortKey": -1592845355401.75,
+            "method": "PUT",
+            "modified": 1592958088950,
+            "name": "Update",
+            "parameters": [],
+            "parentId": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/payments/5ef29c39d964a33caa7b25d2",
+            "_type": "request"
+        },
+        {
+            "_id": "req_e914ecad2e41450aa27a205ae8017607",
+            "authentication": {},
+            "body": {},
+            "created": 1592860446846,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1592845342936.875,
+            "method": "DELETE",
+            "modified": 1592947658094,
+            "name": "Delete",
+            "parameters": [],
+            "parentId": "fld_f4fddc7286eb48d38a3df43cc8a605af",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/payments/5ef25b99ddf45f24f2cc2380",
+            "_type": "request"
+        },
+        {
+            "_id": "env_26c071d10cbf47378fc17a905bdb38c2",
+            "color": null,
+            "created": 1592845384776,
+            "data": {
+                "base_url": "http://localhost:3001/api"
+            },
+            "dataPropertyOrder": {
+                "&": [
+                    "base_url"
+                ]
+            },
+            "isPrivate": false,
+            "metaSortKey": 1592690159923,
+            "modified": 1592845508494,
+            "name": "Base Environment",
+            "parentId": "wrk_838153b9bc53404f9bb6f5e6e45d658b",
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_7d22b323c19544d38c632ac62fceed32",
+            "cookies": [],
+            "created": 1592845384798,
+            "modified": 1592845384798,
+            "name": "Default Jar",
+            "parentId": "wrk_838153b9bc53404f9bb6f5e6e45d658b",
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_1fa997d4c3e64b53ac1470edfcb98d23",
+            "contentType": "yaml",
+            "contents": "",
+            "created": 1592845384815,
+            "fileName": "Insomnia",
+            "modified": 1592845384815,
+            "parentId": "wrk_838153b9bc53404f9bb6f5e6e45d658b",
+            "_type": "api_spec"
+        }
+    ]
+}
